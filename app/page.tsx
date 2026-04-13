@@ -1,8 +1,14 @@
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <h1 className = "text-3xl font-bold">LeadFlow AI</h1>
+    <main style={{ padding: "24px" }}>
+      <h1>LeadFlow AI</h1>
+      <p>Welcome to LeadFlow AI</p>
+
+      <div style={{ marginTop: "16px" }}>
+        <Link href="/leads">Go to Leads Page</Link>
+      </div>
     </main>
   );
 }
