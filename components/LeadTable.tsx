@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { initialLeads, Lead} from "@/data/leads";
+import { Lead } from "@/data/leads";
 
+type LeadTableProps = {
+  leads: Lead[];
+  onContact: (id:number) => void;
+};  
 
-export default function LeadTable() {
-    const [leads, setLeads] = useState<Lead[]>(initialLeads);
+export default function LeadTable({ leads, onContact }: LeadTableProps) {
 
   return (
     <div className="mt-6 overflow-hidden rounded-lg border border-gray-200">
@@ -18,6 +20,9 @@ export default function LeadTable() {
             <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
               Status
             </th>
+            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +30,12 @@ export default function LeadTable() {
             <tr key={lead.id} className="border-t">
               <td className="px-4 py-3 text-sm text-gray-900">{lead.name}</td>
               <td className="px-4 py-3 text-sm text-gray-600">{lead.status}</td>
+              <td className="px-4 py-3 text-sm text-gray-600">
+                <button 
+                  onClick={() => onContact(lead.id)}                >
+                  Contact
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
