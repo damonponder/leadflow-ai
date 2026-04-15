@@ -32,7 +32,7 @@ export default function LeadTable({ leads, onContact }: LeadTableProps) {
               <td className="px-4 py-3 text-sm text-gray-600">{lead.status}</td>
               <td className="px-4 py-3 text-sm text-gray-600">
                 <button 
-                  onClick={() => onContact(lead.id)}                >
+                  onClick={() => onContact(lead.status === "Contacted" ? lead.status : lead.id)}>
                   Contact
                 </button>
               </td>
